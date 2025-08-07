@@ -212,8 +212,9 @@ ENDIF (MSVC)
 
 # Enable CTest/CDash support
 include(CTest)
-
-option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+include(CMakeDependentOption)
+option(LIBARCHIVE_BUILD_SHARED_LIBS "Build shared libraries" OFF)
+cmake_dependent_option(BUILD_SHARED_LIBS "Build shared libraries" ON LIBARCHIVE_BUILD_SHARED_LIBS OFF)
 
 OPTION(ENABLE_MBEDTLS "Enable use of mbed TLS" OFF)
 OPTION(ENABLE_NETTLE "Enable use of Nettle" OFF)
